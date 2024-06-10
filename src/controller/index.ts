@@ -28,8 +28,13 @@ export function addProduct(req :TypedProduct , res :Response){
         price
     }
 
-    products.push(newProduct)
-    res.status(201).json({message : "product added Successfully"})
+    if (newProduct){
+        products.push(newProduct)
+        return res.status(201).json({message : "product added Successfully"})
+    }
+
+     return res.status(404).json({message : "product not added"})
+   
 }
 
 // update product
